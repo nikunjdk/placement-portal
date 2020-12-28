@@ -1,0 +1,16 @@
+<%- include('../partials/header'); -%>
+  <div class="container d-flex align-items-center" style="height: 100vh;">
+    <form class="row g-3" action="/student/login" method="POST">
+      <div class="col-md-12">
+        <label for="usn" class="form-label">USN</label>
+        <input type="text" class="form-control" id="usn" name="usn">
+      </div>
+      <div class="col-md-12">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password">
+      </div><div class="col-12">
+        <button type="submit" class="btn btn-primary">Sign in</button>
+      </div>
+    </form>
+  </div>
+  <%- include('../partials/footer'); -%>

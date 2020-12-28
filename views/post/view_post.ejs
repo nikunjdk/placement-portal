@@ -1,0 +1,106 @@
+<%- include('../partials/header'); -%>
+    <div class="container d-flex align-items-center justify-content-around min-vh-100">
+        <div class="card text-dark bg-light m-3">
+            <div class="card-header">Post</div>
+            <div class="card-body">
+                <h5 class="card-title">Title</h5>
+                <p class="card-text">
+                    <%= post.job_title %>
+                </p>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Company Name</h5>
+                <p class="card-text">
+                    <%= post.company_name %>
+                </p>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Job Type</h5>
+                <p class="card-text">
+                    <%= post.job_type %>
+                </p>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Min CGPA</h5>
+                <p class="card-text">
+                    <%= post.min_cgpa %>
+                </p>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Location</h5>
+                <p class="card-text">
+                    <%= post.location %>
+                </p>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Allowed Branches</h5>
+                <p class="card-text">
+                    <%= post.allowed_branches %>
+                </p>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Salary</h5>
+                <p class="card-text">
+                    <%= post.Salary %>
+                </p>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Application Deadline</h5>
+                <p class="card-text">
+                    <%= post.deadline %>
+                </p>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Active</h5>
+                <p class="card-text">
+                    <%= post.status %>
+                </p>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Job Description</h5>
+                <p class="card-text">
+                    <%= post.job_description %>
+                </p>
+            </div>
+            <% if(currentUser.role ==='admin' ) { %>
+                <div class="card-body d-flex flex-row justify-content-around">
+                    <div><a class="btn btn-primary" href="/post/<%= post.usn %>/edit">Edit Post</a></div>
+                    <div>
+                        <form action="/post/<%= post._id %>?_method=DELETE" method="POST"><button type="submit"
+                                class="btn btn-danger">Delete Post</button></form>
+                    </div>
+                </div>
+                <% } else if(currentUser.role==='student') { %>
+                    <div class="card-body d-flex flex-row justify-content-around">
+                        <div><form action="/post/<%= post._id %>/apply" method="POST"><button type="submit"
+                            class="btn btn-danger">Apply To Post</button></form></div>
+                    </div>
+                    <% } %>
+        </div>
+        <% if(currentUser.role==='admin' ) { %>
+        <div class="card text-dark bg-light mb-3">
+            <div class="card-header">Students Applied To The Post</div>
+            <% if(post.applied_students.length == 0) { %>
+                <div class="card-body">
+                    <h5 class="card-title">No student has applied for this job</h5>
+                </div>
+                <% } else { %>
+                    <% post.applied_students.forEach(function (applied_student) { %>
+                        <div class="card text-dark bg-light m-3">
+                            <div class="card-header">
+                                <%= applied_student.usn %>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Student Name</h5>
+                                <p class="card-text">
+                                    <%= applied_student.name %>
+                                </p>
+                            </div>
+                            <a href="/student/<%= applied_student.usn %>" class="btn btn-secondary">See More Details</a>
+                        </div>
+                        <% }) %>
+                            <% } %>
+        </div>
+        <% } %>
+    </div>
+    <%- include('../partials/footer'); -%>

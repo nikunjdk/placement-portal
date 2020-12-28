@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<%- include('partials/header'); -%>
+<div class="d-flex flex-row align-items-center justify-content-around" style="height: 100vh;">
+      <a href="/student/signup" class="btn btn-lg btn-primary">Student Signup</a>
+      <a href="/student/login" class="btn btn-lg btn-primary">Student Login</a>
+      <a href="/admin/login" class="btn btn-lg btn-primary">Admin Login</a>
+</div>
+<%- include('partials/footer'); -%>

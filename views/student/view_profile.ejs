@@ -1,0 +1,71 @@
+<%- include('../partials/header'); -%>
+<div class="container d-flex align-items-center justify-content-around min-vh-100">
+    <div class="card text-dark bg-light m-3">
+        <div class="card-header">Student Profile</div>
+        <div class="card-body">
+          <h5 class="card-title">USN</h5>
+          <p class="card-text"><%= student.usn %></p>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Name</h5>
+            <p class="card-text"><%= student.name %></p>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Passout Year</h5>
+            <p class="card-text"><%= student.passout_year %></p>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Branch</h5>
+            <p class="card-text"><%= student.branch %></p>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Gender</h5>
+            <p class="card-text"><%= student.gender %></p>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Contact Number</h5>
+            <p class="card-text"><%= student.contact_number %></p>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Email Id</h5>
+            <a href="mailto:<%= student.email_id %>" class="card-text"><%= student.email_id %></a>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">CGPA</h5>
+            <p class="card-text"><%= student.cgpa %></p>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Placed</h5>
+            <p class="card-text"><%= student.status %></p>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Resume Url</h5>
+            <a href="http://<%= student.resume_url %>"><%= student.resume_url %></a>
+          </div>
+          <div class="card-body d-flex flex-row justify-content-around">
+              <div><a class="btn btn-primary" href="/student/<%= student.usn.toUpperCase() %>/edit">Edit Profile</a></div>
+              <div><form action="/student/<%= student.usn %>?_method=DELETE" method="POST"><button type="submit" class="btn btn-danger">Delete Profile</button></form></div>
+          </div>
+      </div>
+      <div class="card text-dark bg-light mb-3">
+        <div class="card-header">Applied Posts</div>
+        <% if(student.applied_posts.length == 0) { %>
+          <div class="card-body">
+            <h5 class="card-title">You have not applied for any job</h5>
+            <p class="card-text"><a href="/post/" class="btn btn-primary">See available jobs</a></p>
+          </div>
+        <% } else { %>
+        <% student.applied_posts.forEach(function (applied_post) { %>
+            <div class="card text-dark bg-light m-3">
+                <div class="card-header"><%= applied_post.company_name %></div>
+                <div class="card-body">
+                    <h5 class="card-title">Job Title</h5>
+                    <p class="card-text"><%= applied_post.job_title %></p>
+                  </div>
+                  <a href="/post/<%= applied_post._id %>" class="btn btn-secondary">See More</a>
+            </div>
+        <% }) %>
+        <% } %>
+      </div>
+</div>
+<%- include('../partials/footer'); -%>

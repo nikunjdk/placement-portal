@@ -8,7 +8,8 @@ var createError     = require('http-errors'),
     flash           = require('connect-flash'),
     session         = require('express-session'),
     methodOverride  = require('method-override'),
-    LocalStrategy   = require('passport-local').Strategy,
+    compression     = require('compression'),
+    helmet          = require('helmet'),
     passport        = require('passport'),
     Student         = require('./models/studentModel'),
     Admin           = require('./models/adminModel'),
@@ -23,6 +24,9 @@ dotenv.config();
 
 app.use(methodOverride("_method"));
 
+app.use(compression()); //Compress all routes
+
+app.use(helmet());
 
 //Import the mongoose module
 var mongoose = require('mongoose');

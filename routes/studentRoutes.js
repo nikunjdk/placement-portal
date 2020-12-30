@@ -22,7 +22,11 @@ router.post('/login', passport.authenticate('student-local', { failureRedirect: 
 /*
  * GET
  */
-router.get('/', middleware.isAdmin, studentController.list);
+router.get('/', middleware.isAdmin, function(req, res) {
+    res.render('student/filter');
+});
+
+router.post('/:type', middleware.isAdmin, studentController.query);
 
 /*
  * GET

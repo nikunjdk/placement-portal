@@ -1,0 +1,139 @@
+<%- include('../partials/header'); -%>
+  <div class="container d-flex flex-column justify-content-around align-items-center min-vh-100">
+    <div>
+      <form action="/student/showAll" method="post">
+        <button class="btn btn-outline-success" type="submit">
+          Show All Students
+        </button>
+      </form>
+    </div>
+    <div>
+      <form class="d-flex" method="POST" action="/student/showUsn">
+        <label for="usn" class="form-label">USN</label>
+        <input name="usn" id="usn" class="form-control me-2" type="search" placeholder="Search USN"
+          aria-label="Search" />
+
+        <button class="btn btn-outline-success" type="submit">
+          Search USN
+        </button>
+      </form>
+    </div>
+    <div>
+      <form class="row g-3" action="/student/filter" method="post">
+        <div class="col-md-4">
+          <label for="passout_year" class="form-label">Passout Year</label>
+          <div class="dropdown">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="passout_year"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Passout Year
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="passout_year">
+              <li>
+                <div class="form-check" style="padding-left: 2em;">
+                  <input class="form-check-input" type="checkbox" value="2021" id="2021" name="passout_year">
+                  <label class="form-check-label" for="2021">
+                    2021
+                  </label>
+                </div>
+              </li>
+              <li>
+                <div class="form-check" style="padding-left: 2em;">
+                  <input class="form-check-input" type="checkbox" value="2022" id="2022" name="passout_year">
+                  <label class="form-check-label" for="2022">
+                    2022
+                  </label>
+                </div>
+              </li>
+              <li>
+                <div class="form-check" style="padding-left: 2em;">
+                  <input class="form-check-input" type="checkbox" value="2023" id="2023" name="passout_year">
+                  <label class="form-check-label" for="2023">
+                    2023
+                  </label>
+                </div>
+              </li>
+              <li>
+                <div class="form-check" style="padding-left: 2em;">
+                  <input class="form-check-input" type="checkbox" value="2024" id="2024" name="passout_year">
+                  <label class="form-check-label" for="2024">
+                    2024
+                  </label>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="branch" class="form-label">Branch</label>
+          <div class="dropdown">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="branch"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Branches
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="branch">
+              <li>
+                <div class="form-check" style="padding-left: 2em;">
+                  <input class="form-check-input" type="checkbox" value="CSE" id="CSE" name="branch">
+                  <label class="form-check-label" for="CSE">
+                    CSE
+                  </label>
+                </div>
+              </li>
+              <li>
+                <div class="form-check" style="padding-left: 2em;">
+                  <input class="form-check-input" type="checkbox" value="ISE" id="ISE" name="branch">
+                  <label class="form-check-label" for="ISE">
+                    ISE
+                  </label>
+                </div>
+              </li>
+              <li>
+                <div class="form-check" style="padding-left: 2em;">
+                  <input class="form-check-input" type="checkbox" value="Mech" id="Mech" name="branch">
+                  <label class="form-check-label" for="Mech">
+                    Mech
+                  </label>
+                </div>
+              </li>
+              <li>
+                <div class="form-check" style="padding-left: 2em;">
+                  <input class="form-check-input" type="checkbox" value="Civil" id="Civil" name="branch">
+                  <label class="form-check-label" for="Civil">
+                    Civil
+                  </label>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="gender" class="form-label">Gender</label>
+          <select id="gender" class="form-select" name="gender">
+            <option disabled selected>Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="status" class="form-label">Status</label>
+          <select id="status" class="form-select" name="status">
+            <option disabled selected>Select status</option>
+            <option value="true">Placed</option>
+            <option value="false">Not Placed</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="minCgpa" class="form-label">Min CGPA</label>
+          <input type="number" class="form-control" id="minCgpa" name="minCgpa" min="0.0" max="10.0" step="0.01">
+        </div>
+        <div class="col-md-4">
+          <label for="maxCgpa" class="form-label">Max CGPA</label>
+          <input type="number" class="form-control" id="maxCgpa" name="maxCgpa" min="0.0" max="10.0" step="0.01">
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Search Students</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <%- include('../partials/footer'); -%>

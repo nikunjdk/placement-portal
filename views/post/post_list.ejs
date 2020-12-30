@@ -1,0 +1,27 @@
+<%- include('../partials/header'); -%>
+    <div class="container mt-3">
+        <div class="card text-dark bg-light mb-3">
+            <div class="card-header">Posts</div>
+            <% if(posts.length==0) { %>
+                <div class="card-body">
+                    <h5 class="card-title">No Such Post</h5>
+                </div>
+                <% } else { %>
+                    <% posts.forEach(function (post) { %>
+                        <div class="card text-dark bg-light m-3">
+                            <div class="card-header">
+                                <%= post.company_name %>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Job Title</h5>
+                                <p class="card-text">
+                                    <%= post.job_title %>
+                                </p>
+                            </div>
+                            <a href="/post/<%= post._id %>" class="btn btn-secondary">See More</a>
+                        </div>
+                        <% }) %>
+                            <% } %>
+        </div>
+    </div>
+    <%- include('../partials/footer'); -%>

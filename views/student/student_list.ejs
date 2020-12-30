@@ -1,0 +1,27 @@
+<%- include('../partials/header'); -%>
+    <div class="container mt-3">
+        <div class="card text-dark bg-light mb-3">
+            <div class="card-header">Students</div>
+            <% if(students.length==0) { %>
+                <div class="card-body">
+                    <h5 class="card-title">No such student</h5>
+                </div>
+                <% } else { %>
+                    <% students.forEach(function (student) { %>
+                        <div class="card text-dark bg-light m-3">
+                            <div class="card-header">
+                                <%= student.usn %>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Student Name</h5>
+                                <p class="card-text">
+                                    <%= student.name %>
+                                </p>
+                            </div>
+                            <a href="/student/<%= student.usn %>" class="btn btn-secondary">See More Details</a>
+                        </div>
+                        <% }) %>
+                            <% } %>
+        </div>
+    </div>
+    <%- include('../partials/footer'); -%>

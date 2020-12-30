@@ -6,13 +6,17 @@ var middleware = require('../middleware/index');
 /*
  * GET
  */
-router.get('/', middleware.isLoggedIn, postController.list);
+router.get('/', middleware.isLoggedIn, function (req, res) {
+    res.render('post/filter');
+});
 
-router.get('/create', middleware.isAdmin, function(req, res) {
+router.post('/:type', middleware.isLoggedIn, postController.query)
+
+router.get('/create', middleware.isAdmin, function (req, res) {
     res.render('post/create_post');
 });
 
-router.post('/:id/apply', postController.apply)
+router.post('/:id/apply', middleware.isEligible, postController.apply)
 
 /*
  * GET

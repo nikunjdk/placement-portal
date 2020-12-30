@@ -9,7 +9,7 @@ router.get('/login', function(req, res, next) {
     res.render('admin/login');
   });
 
-router.post('/login',passport.authenticate('admin-local', { failureRedirect: 'admin/login' }), function(req, res, next) {
+router.post('/login',passport.authenticate('admin-local', { failureRedirect: 'login', failureFlash: true }), function(req, res, next) {
     res.redirect('/admin');
 });
 

@@ -114,10 +114,6 @@ module.exports = {
             allowed_branches: req.body.allowed_branches,
             Salary: req.body.Salary,
             deadline: req.body.deadline,
-            timestamp: req.body.timestamp,
-            applied_students: req.body.applied_students,
-            status: req.body.status
-
         });
 
         post.save(function (err, post) {

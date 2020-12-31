@@ -10,6 +10,7 @@ var createError = require("http-errors"),
   methodOverride = require("method-override"),
   compression = require("compression"),
   passport = require("passport"),
+  // seed = require("./seeds"),
   Student = require("./models/studentModel"),
   Admin = require("./models/adminModel"),
   indexRouter = require("./routes/index"),
@@ -24,6 +25,8 @@ dotenv.config();
 app.use(methodOverride("_method"));
 
 app.use(compression()); //Compress all routes
+
+// seed();
 
 
 //Import the mongoose module
@@ -60,6 +63,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(flash());
+
 
 // app.use(function(req, res, next) {
 //   res.setHeader("content-security-policy-report-only", "default-src 'self'; script-src 'self' 'report-sample' 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'; style-src 'self' 'report-sample' 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' ; base-uri 'none'; object-src 'none'; report-uri https://5e52f4c893efcda6a7d40460.endpoint.csper.io")

@@ -27,7 +27,7 @@ module.exports = {
      */
     show: function (req, res) {
         var id = req.params.id;
-        adminModel.findOne({_id: id}, function (err, admin) {
+        adminModel.findOne({ _id: id }, function (err, admin) {
             if (err) {
                 return res.status(500).json({
                     message: 'Error when getting admin.',
@@ -48,11 +48,11 @@ module.exports = {
      */
     create: function (req, res) {
         var admin = new adminModel({
-			username : req.body.username,
+            username: req.body.username,
         });
 
-        adminModel.register(admin, req.body.password, function(err) {
-            if(err) {
+        adminModel.register(admin, req.body.password, function (err) {
+            if (err) {
                 return res.status(500).json({
                     message: 'Error when creating admin',
                     error: err
@@ -67,7 +67,7 @@ module.exports = {
      */
     update: function (req, res) {
         var id = req.params.id;
-        adminModel.findOne({_id: id}, function (err, admin) {
+        adminModel.findOne({ _id: id }, function (err, admin) {
             if (err) {
                 return res.status(500).json({
                     message: 'Error when getting admin',
@@ -81,8 +81,8 @@ module.exports = {
             }
 
             admin.username = req.body.username ? req.body.username : admin.username;
-			admin.role = req.body.role ? req.body.role : admin.role;
-			
+            admin.role = req.body.role ? req.body.role : admin.role;
+
             admin.save(function (err, admin) {
                 if (err) {
                     return res.status(500).json({

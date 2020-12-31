@@ -5,19 +5,19 @@ var passport = require('passport');
 var middleware = require('../middleware/index');
 
 /* GET admin login page. */
-router.get('/login', function(req, res, next) {
-    res.render('admin/login');
-  });
+router.get('/login', function (req, res, next) {
+  res.render('admin/login');
+});
 
-router.post('/login',passport.authenticate('admin-local', { failureRedirect: 'login', failureFlash: true }), function(req, res, next) {
-    res.redirect('/admin');
+router.post('/login', passport.authenticate('admin-local', { failureRedirect: 'login', failureFlash: true }), function (req, res, next) {
+  res.redirect('/admin');
 });
 
 
 /*
  * GET
  */
-router.get('/', middleware.isAdmin, function(req, res) {
+router.get('/', middleware.isAdmin, function (req, res) {
   res.render('admin/home');
 });
 

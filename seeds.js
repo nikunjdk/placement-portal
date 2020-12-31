@@ -1,4 +1,3 @@
-var mongoose = require("mongoose");
 var Student = require("./models/studentModel");
 var Post = require("./models/postModel");
 
@@ -48,9 +47,9 @@ function createPosts() {
         for (let min_cgpa = 7; min_cgpa < 10; min_cgpa++) {
             for (let count = 1; count < 11; count++) {
                 let data = {
-                    job_title: "Job_" + allowed_branches[branch_count].toString()  + count.toString(),
-                    job_description : job_description,
-                    job_type : job_type[count % 2],
+                    job_title: "Job_" + allowed_branches[branch_count].toString() + count.toString(),
+                    job_description: job_description,
+                    job_type: job_type[count % 2],
                     company_name: company_name,
                     min_cgpa: min_cgpa,
                     location: location,
@@ -75,8 +74,8 @@ function seedDB() {
     });
     console.log("Deleted Students");
     createStudents();
-    Student.insertMany(studentData, function(err) {
-        if(err) {
+    Student.insertMany(studentData, function (err) {
+        if (err) {
             console.log(err);
         }
         else console.log("Students added to db")
@@ -103,8 +102,8 @@ function seedDB() {
     });
     console.log("Posts deleted");
     createPosts();
-    Post.insertMany(postData, function(err) {
-        if(err) {
+    Post.insertMany(postData, function (err) {
+        if (err) {
             console.log(err);
         }
         else console.log("Posts added to db")
@@ -117,7 +116,7 @@ function seedDB() {
     //                 error: err
     //             });
     //         }
-    //     });        
+    //     });
     // });
     console.log("Posts created");
 }
